@@ -2,16 +2,16 @@ import classes from "./Header.module.css";
 
 const Header = () => {
   return (
-    <div className={classes.header}>
+    <div className={'container-fluid '+classes.header}>
       <h1>RealEstate</h1>
-      <form>
+      <form className={classes.forminput}>
         <input className="" type="text" placeholder="search" />
       </form>
-      <div className={classes.headerLink}>
-        <p>Home</p>
-        <p>About</p>
-        <p>Signin</p>
-      </div>
+      <ul className={classes.list}>
+        <li>Home</li>
+        <li>About</li>
+        <li>SignIn</li>
+      </ul>
     </div>
   );
 };

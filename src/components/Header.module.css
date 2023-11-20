@@ -1,0 +1,38 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: aqua;
+}
+
+.headerLink {
+    display: flex;
+    align-items: center;
+}
+
+.forminput {
+    background: rgb(249, 144, 5);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.forminput input {
+    background: transparent;
+    border: none;
+}
+
+.forminput input:focus {
+    outline: none;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+}
+
+.list li {
+    list-style: none;
+}
