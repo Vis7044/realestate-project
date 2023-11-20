@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.headerLink {
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+.headerLink p {
+    margin-left: 10px;
+}
