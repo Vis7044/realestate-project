@@ -50,6 +50,9 @@ li{
 /* border need to be removed */
 }
 
+.search input:focus {
+    outline: none;
+}
 
 @media screen and (max-width: 991px) {
     .header {
@@ -86,6 +89,7 @@ li{
         flex-direction: column;
         margin: 0;
     }
+
     .menu a, form{
         margin: .5rem;
     }   

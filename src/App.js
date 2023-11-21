@@ -9,8 +9,7 @@ import Profile from "./pages/Profile";
 
 import Header from './components/Header'
 
-// Mukesh Prasad Yadav
-//vishal
+
 function App() {
   return (
     <BrowserRouter>
