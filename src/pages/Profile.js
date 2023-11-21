@@ -11,7 +11,8 @@ const Profile = () => {
    
     <div className={classes['profile-box']}>
       <img src={profilepic} className={classes['profile-pic']} />
-      <a href='./Home' className={classes['home-pic']}><FaHome></FaHome></a>
+      {/* home link need to be changed */}
+      <a href='./Home' className={classes['home-pic']}><FaHome></FaHome></a> 
       <h3 className={classes.name}>Jhonny Bhaiya</h3>
       <p className={classes.des}> International khiladi</p>
       <div className={classes['profile-lower']}>
