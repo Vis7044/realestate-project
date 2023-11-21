@@ -83,6 +83,7 @@ li{
         flex-direction: column;
         margin: 0;
     }
+    
     .menu a, form{
         margin: .5rem;
     }

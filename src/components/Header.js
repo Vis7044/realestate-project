@@ -31,8 +31,8 @@ const Header = () => {
           </form>
           <div className={classes.menu}>
             <a>Home</a>
-            <a>Home</a>
-            <a>Home</a>
+            <a>About</a>
+            <a>Signin</a>
           </div>
         </div>
       </div>
