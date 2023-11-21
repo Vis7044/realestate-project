@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import classes from "./Header.module.css";
 import { FaHamburger } from "react-icons/fa";
-import { FaWindowClose} from "react-icons/fa";
+import { FaWindowClose } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -17,8 +18,12 @@ const Header = () => {
       <div className={`row ${classes.nav}`}>
         <div className={`col-lg-4 col-md-12 ${classes.header}`}>
           <h1>RealEstate</h1>
-          {!showMenu && <FaHamburger className={classes.active} onClick={isActive} />}
-          {showMenu && <FaWindowClose className={classes.active} onClick={isActive} />}
+          {!showMenu && (
+            <FaHamburger className={classes.active} onClick={isActive} />
+          )}
+          {showMenu && (
+            <FaWindowClose className={classes.active} onClick={isActive} />
+          )}
         </div>
         <div
           className={`${
@@ -27,13 +32,19 @@ const Header = () => {
         >
           <form className={classes.search}>
             <input placeholder="search.." />
-            <FaSearch className={classes.searchicon}/>
+            <FaSearch className={classes.searchicon} />
           </form>
-          <div className={classes.menu}>
-            <a>Home</a>
-            <a>About</a>
-            <a>Signin</a>
-          </div>
+          <ul className={classes.menu}>
+            <li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/about">About</NavLink>
+            </li>
+            <li>
+              <NavLink to="/sign-in">SignIn</NavLink>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
