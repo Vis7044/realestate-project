@@ -1,15 +1,12 @@
 import React from 'react'
-<<<<<<< HEAD
+
 import classes from './Profile.module.css'
 import profilepic from '../Assets/profile.jpg'
 import { FaFacebook } from 'react-icons/fa'
 import { FaInstagram } from 'react-icons/fa'
 import { FaTwitter } from 'react-icons/fa'
 import { FaHome } from 'react-icons/fa'
-=======
 
-
->>>>>>> 40839d8e079e4c051f5602fbd103f08ed275c46e
 const Profile = () => {
   return (
    <div className={classes.container}>
