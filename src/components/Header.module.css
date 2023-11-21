@@ -52,7 +52,7 @@ li {
     height: 100%;
     width: 100%;
     margin: 1.2rem 0 1.2rem 0;
-
+/* border need to be removed */
 }
 
 .search input:focus {
@@ -64,6 +64,9 @@ li {
     .header {
         display: flex;
         justify-content: space-between;
+    }
+    .search{
+        width: 97%;
     }
 
     .active {
@@ -101,5 +104,4 @@ li {
     form {
         margin: .5rem;
     }
-
 }
