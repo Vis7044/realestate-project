@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 const SignUp = () => {
   const submitHandler = (event) => {
     event.preventDefault();
+
     console.log("hello");
   };
   return (
