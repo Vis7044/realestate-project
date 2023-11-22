@@ -7,22 +7,32 @@ import { FaInstagram } from 'react-icons/fa'
 import { FaTwitter } from 'react-icons/fa'
 import { FaHome } from 'react-icons/fa'
 
+
 const Profile = () => {
   return (
-   <div className={classes.container}>
-   
-    <div className={classes['profile-box']}>
-      <img src={profilepic} className={classes['profile-pic']} />
-      {/* home link need to be changed */}
-      <a href='./Home' className={classes['home-pic']}><FaHome></FaHome></a> 
-      <h3 className={classes.name}>Jhonny Bhaiya</h3>
-      <p className={classes.des}> International khiladi</p>
-      <div className={classes['profile-lower']}>
-      <a href='https://www.facebook.com/JoSinss'><FaFacebook></FaFacebook></a>
-      <a href='https://www.instagram.com/jhony_.sins._/'><FaInstagram></FaInstagram></a>
+   <div className={classes['container-area']}>
+        <div className={classes['profile-box']}>
+      <div className={classes['img-area']}>
+        <img src={profilepic} />
+      </div>  
+      <div className={classes['text-area']}>
+        <p className={classes['name']}>Jhonny Bhaiya</p>
+        <p className={classes['job']}>Aurto ka masiha</p>
+        <p>Age:40 yrs</p>
+        <p>Girl-Friend: Vishal ki Maugi</p>
       </div>
+      <div className={classes['button-area']}>
+        <button className={classes['follow-button']}>Log Out</button>
+      </div>
+      <div className={classes['media-button']}>
+        <a href='' className={classes['link-area']}><FaFacebook></FaFacebook></a>
+        <a href=''id='one' className={classes['link-area'] }><FaInstagram></FaInstagram></a>
+        <a href='' className={classes['link-area']}><FaTwitter></FaTwitter></a>
+      </div>
+      
     </div>
    </div>
+
   )
 }
 
