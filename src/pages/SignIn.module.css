@@ -1,0 +1,15 @@
+.signup {
+    max-width: 668px;
+    margin: auto;
+}
+
+.signup form input {
+    margin-bottom: 1.2rem;
+    border-radius: .5rem;
+}
+
+.signupbtn {
+    background-color: #3C4A5D;
+    border-radius: .5rem;
+    text-transform: uppercase;
+}
