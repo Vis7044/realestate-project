@@ -53,6 +53,11 @@ const Header = () => {
             <FaSearch className={classes.searchicon} />
           </form>
           <ul className={classes.menu}>
+            {currentUser && (
+              <li className={classes.profile}>
+                <NavLink to={"/profile"}>profile</NavLink>
+              </li>
+            )}
             <li>
               <NavLink to="/">Home</NavLink>
             </li>
@@ -62,11 +67,13 @@ const Header = () => {
             <li>
               <NavLink to="/sign-in">
                 {currentUser ? (
-                  <img
-                    className={classes.profileImage}
-                    src={currentUser.avatar}
-                    alt="profile"
-                  />
+                  <NavLink to="/profile">
+                    <img
+                      className={`${classes.profileImage} ${classes.img_header}`}
+                      src={currentUser.avatar}
+                      alt="profile"
+                    />
+                  </NavLink>
                 ) : (
                   "sign In"
                 )}
