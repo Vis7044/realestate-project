@@ -1,23 +1,46 @@
 import React, { useState } from "react";
 import classes from "./SignUp.module.css";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({});
-  const submitHandler = (event) => {
-    event.preventDefault();
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate()
 
-    console.log("hello");
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    try {
+      setLoading(true);
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        setError(data.message)
+        setLoading(false);
+        return;
+      }
+      setLoading(false);
+      setError(null);
+      navigate('/sign-in');
+    } catch (error) {
+      setLoading(false);
+      setError(error.message);
+    }
   };
 
   const handleChange = (event) => {
     setFormData((prevState) => ({
       ...prevState,
-      [event.target.id] : event.target.value
+      [event.target.id]: event.target.value,
     }));
-  }
-  console.log(formData)
-
+  };
 
   return (
     <div className={classes.signup}>
@@ -45,9 +68,10 @@ const SignUp = () => {
           onChange={handleChange}
         />
         <button
+          disabled={loading}
           className={`btn text-white p-3 disabled:opacity-80 ${classes.signupbtn}`}
         >
-          Sign up
+          {loading ? "Loading..." : "Sign Up"}
         </button>
       </form>
       <div className="d-flex justify-content-end mt-4">
@@ -56,6 +80,7 @@ const SignUp = () => {
           <span className="mx-2">singn in</span>
         </NavLink>
       </div>
+      {error && <p className="text-danger">{error}</p>}
     </div>
   );
 };
