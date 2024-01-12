@@ -13,3 +13,6 @@
     border-radius: .5rem;
     text-transform: uppercase;
 }
+.signupbtn:hover {
+    opacity: 80%;
+}

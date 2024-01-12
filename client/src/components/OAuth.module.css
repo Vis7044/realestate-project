@@ -1,0 +1,10 @@
+.OAuthbtn {
+    background-color: rgb(218, 69, 69);
+    border-radius: .5rem;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.OAuthbtn:hover {
+    opacity: 80%;
+}

@@ -1,15 +1,19 @@
-.signup {
+.signin {
     max-width: 668px;
     margin: auto;
 }
 
-.signup form input {
+.signin form input {
     margin-bottom: 1.2rem;
     border-radius: .5rem;
 }
 
-.signupbtn {
+.signinbtn {
     background-color: #3C4A5D;
     border-radius: .5rem;
     text-transform: uppercase;
+}
+
+.signinbtn:hover {
+    opacity: 95%;
 }

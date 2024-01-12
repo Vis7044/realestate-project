@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import {siginInStart, signInSuccess, signInFailure} from '../redux/user/UserSlice'
+import OAuth from "../components/OAuth";
 
 
 const SignIn = () => {
@@ -46,7 +47,7 @@ const SignIn = () => {
 
 
   return (
-    <div className={classes.signup}>
+    <div className={classes.signin}>
       <h1 className="text-bold text-center my-5">Sign In</h1>
       <form className="d-flex flex-column" onSubmit={submitHandler}>
         <input
@@ -64,10 +65,11 @@ const SignIn = () => {
           onChange={handleChange}
         />
         <button
-          className={`btn text-white p-3 disabled:opacity-80 ${classes.signupbtn}`}
+          className={`btn text-white p-3 ${classes.signinbtn}`}
         >
           {loading ? "Loading..." : "Sign In"}
         </button>
+        <OAuth/>
       </form>
       <div className="d-flex justify-content-end mt-4">
         <p>Dont have an account?</p>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classes from "./SignUp.module.css";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import OAuth from "../components/OAuth";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({});
@@ -69,10 +70,11 @@ const SignUp = () => {
         />
         <button
           disabled={loading}
-          className={`btn text-white p-3 disabled:opacity-80 ${classes.signupbtn}`}
+          className={`btn text-white p-3 ${classes.signupbtn}`}
         >
           {loading ? "Loading..." : "Sign Up"}
         </button>
+        <OAuth/>
       </form>
       <div className="d-flex justify-content-end mt-4">
         <p>Have an account?</p>
