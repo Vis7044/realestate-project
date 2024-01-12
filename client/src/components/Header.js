@@ -4,13 +4,14 @@ import { FaHamburger } from "react-icons/fa";
 import { FaWindowClose } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const { currentUser } = useSelector((state) => state.user);
 
   const isActive = () => {
     setShowMenu(!showMenu);
-    console.log("hlelo");
   };
 
   return (
@@ -18,12 +19,29 @@ const Header = () => {
       <div className={`row ${classes.nav}`}>
         <div className={`col-lg-4 col-md-12 ${classes.header}`}>
           <h1>RealEstate</h1>
-          {!showMenu && (
-            <FaHamburger className={classes.active} onClick={isActive} />
-          )}
-          {showMenu && (
-            <FaWindowClose className={classes.active} onClick={isActive} />
-          )}
+
+          {!showMenu &&
+            (currentUser ? (
+              <img
+                className={`${classes.profileImage} ${classes.active}`}
+                src={currentUser.avatar}
+                alt="profile"
+                onClick={isActive}
+              />
+            ) : (
+              <FaHamburger className={classes.active} onClick={isActive} />
+            ))}
+          {showMenu &&
+            (currentUser ? (
+              <img
+                className={`${classes.profileImage} ${classes.active}`}
+                src={currentUser.avatar}
+                alt="profile"
+                onClick={isActive}
+              />
+            ) : (
+              <FaWindowClose className={classes.active} onClick={isActive} />
+            ))}
         </div>
         <div
           className={`${
@@ -42,7 +60,17 @@ const Header = () => {
               <NavLink to="/about">About</NavLink>
             </li>
             <li>
-              <NavLink to="/sign-in">SignIn</NavLink>
+              <NavLink to="/sign-in">
+                {currentUser ? (
+                  <img
+                    className={classes.profileImage}
+                    src={currentUser.avatar}
+                    alt="profile"
+                  />
+                ) : (
+                  "sign In"
+                )}
+              </NavLink>
             </li>
           </ul>
         </div>
