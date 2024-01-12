@@ -7,7 +7,7 @@ const SignUp = () => {
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const submitHandler = async (event) => {
     event.preventDefault();
@@ -22,13 +22,13 @@ const SignUp = () => {
       });
       const data = await res.json();
       if (data.success === false) {
-        setError(data.message)
+        setError(data.message);
         setLoading(false);
         return;
       }
       setLoading(false);
       setError(null);
-      navigate('/sign-in');
+      navigate("/sign-in");
     } catch (error) {
       setLoading(false);
       setError(error.message);

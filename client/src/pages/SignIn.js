@@ -1,13 +1,40 @@
 import React, { useState } from "react";
 import classes from "./SignIn.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+
 
 const SignIn = () => {
   const [formData, setFormData] = useState({});
-  const submitHandler = (event) => {
-    event.preventDefault();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate()
 
-    console.log("hello");
+
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    try {
+      setLoading(true);
+      const res = await fetch("/api/auth/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        setError(data.message)
+        setLoading(false);
+        return;
+      }
+      setLoading(false);
+      setError(null);
+      navigate('/');
+    } catch (error) {
+      setLoading(false);
+      console.log(error.message)
+      setError(error.message);
+    }
   };
 
   const handleChange = (event) => {
@@ -16,12 +43,12 @@ const SignIn = () => {
       [event.target.id] : event.target.value
     }));
   }
-  console.log(formData)
+
 
 
   return (
     <div className={classes.signup}>
-      <h1 className="text-bold text-center my-5">SignIn</h1>
+      <h1 className="text-bold text-center my-5">Sign In</h1>
       <form className="d-flex flex-column" onSubmit={submitHandler}>
         <input
           type="email"
@@ -40,7 +67,7 @@ const SignIn = () => {
         <button
           className={`btn text-white p-3 disabled:opacity-80 ${classes.signupbtn}`}
         >
-          Sign in
+          {loading ? "Loading..." : "Sign In"}
         </button>
       </form>
       <div className="d-flex justify-content-end mt-4">
@@ -49,6 +76,7 @@ const SignIn = () => {
           <span className="mx-2">singn up</span>
         </NavLink>
       </div>
+      {error && <p className="text-danger">{error}</p>}
     </div>
   );
 };
