@@ -13,6 +13,11 @@ li {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
+.Logo{
+  margin-top: 7px;
+  font-size: 1.6rem;
+}
+
 .menu {
   display: flex;
   align-items: center;
@@ -78,6 +83,9 @@ li {
   }
   .search {
     width: 97%;
+  }
+  .Logo {
+    margin-top: -10px;
   }
 
   .profileImage {

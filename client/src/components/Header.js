@@ -18,7 +18,7 @@ const Header = () => {
     <div className={`container-fluid`}>
       <div className={`row ${classes.nav}`}>
         <div className={`col-lg-4 col-md-12 ${classes.header}`}>
-          <h1>RealEstate</h1>
+          <h1 className={classes.Logo}>RealEstate</h1>
 
           {!showMenu &&
             (currentUser ? (
