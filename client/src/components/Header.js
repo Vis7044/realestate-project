@@ -13,6 +13,7 @@ const Header = () => {
 
   const { currentUser } = useSelector((state) => state.user);
 
+
   const isActive = () => {
     setShowMenu(!showMenu);
   };
