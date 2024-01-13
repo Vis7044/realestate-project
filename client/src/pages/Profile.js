@@ -1,42 +1,29 @@
 import React from "react";
+import { useSelector } from "react-redux";
+export default function Profile(){
+  const {currentUser}=useSelector((state)=>state.user)
+console.log(currentUser)
+  return(
+    <div className="p-3 max-w-lg mx-auto">
+    <h1 className="text-3xl font-semibold text-center my-7 text-black">Profile</h1>
+    <form className="flex flex-col gap-5">
+      <img src={currentUser.avatar} alt="Profile" className="rounded-full h-24 w-24 object-cover cursor-pointer self-center" />
 
-import classes from "./Profile.module.css";
-import profilepic from "../Assets/profile.jpg";
-import { FaFacebook } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
-import { FaHome } from "react-icons/fa";
+      <input placeholder={currentUser.username} type="text" className="bordr p-3 rounded-lg" id="username" />
+      
+      <input placeholder={currentUser.email} type="email" className="bordr p-3 rounded-lg" id="email" />
 
-const Profile = () => {
-  return (
-    <div className={classes["container-area"]}>
-      <div className={classes["profile-box"]}>
-        <div className={classes["img-area"]}>
-          <img src={profilepic} />
-        </div>
-        <div className={classes["text-area"]}>
-          <p className={classes["name"]}>Jhonny Bhaiya</p>
-          <p className={classes["job"]}>Aurto ka masiha</p>
-          <p>Age:40 yrs</p>
-          <p>Girl-Friend: Vishal ki Maugi</p>
-        </div>
-        <div className={classes["button-area"]}>
-          <button className={classes["follow-button"]}>Log Out</button>
-        </div>
-        <div className={classes["media-button"]}>
-          <a className={classes["link-area"]}>
-            <FaFacebook></FaFacebook>
-          </a>
-          <a id="one" className={classes["link-area"]}>
-            <FaInstagram></FaInstagram>
-          </a>
-          <a className={classes["link-area"]}>
-            <FaTwitter></FaTwitter>
-          </a>
-        </div>
-      </div>
+      <input placeholder="password" type="text" className="bordr p-3 rounded-lg" id="password" />
+      <button className="bg-slate-700 text-white roundedl-lg p-3 uppercase hover:opacity-95 disabled: opacity-80">Update</button>
+  
+    </form>
+    <div className="flex justify-between mt-5">
+      <span className="text-red-700 cursor-pointer"> Delete Account</span>
+
+      <span className="text-red-700 cursor-pointer"> Sign Out</span>
     </div>
-  );
-};
+    </div>
+  )
 
-export default Profile;
+ 
+}
