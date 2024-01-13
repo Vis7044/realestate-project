@@ -61,6 +61,13 @@ li {
     outline: none;
 }
 
+.profileImage {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-position: center center;
+}
+
 
 @media screen and (max-width: 991px) {
     .header {

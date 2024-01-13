@@ -4,14 +4,18 @@ import { FaHamburger } from "react-icons/fa";
 import { FaWindowClose } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
+<<<<<<< HEAD
  
+=======
+  const { currentUser } = useSelector((state) => state.user);
+>>>>>>> 154f4f4470465cd3485de88deb2cb4607b7e1b12
 
   const isActive = () => {
     setShowMenu(!showMenu);
-    console.log("hlelo");
   };
 
   return (
@@ -19,12 +23,29 @@ const Header = () => {
       <div className={`row ${classes.nav}`}>
         <div className={`col-lg-4 col-md-12 ${classes.header}`}>
           <h1>RealEstate</h1>
-          {!showMenu && (
-            <FaHamburger className={classes.active} onClick={isActive} />
-          )}
-          {showMenu && (
-            <FaWindowClose className={classes.active} onClick={isActive} />
-          )}
+
+          {!showMenu &&
+            (currentUser ? (
+              <img
+                className={`${classes.profileImage} ${classes.active}`}
+                src={currentUser.avatar}
+                alt="profile"
+                onClick={isActive}
+              />
+            ) : (
+              <FaHamburger className={classes.active} onClick={isActive} />
+            ))}
+          {showMenu &&
+            (currentUser ? (
+              <img
+                className={`${classes.profileImage} ${classes.active}`}
+                src={currentUser.avatar}
+                alt="profile"
+                onClick={isActive}
+              />
+            ) : (
+              <FaWindowClose className={classes.active} onClick={isActive} />
+            ))}
         </div>
         <div
           className={`${
@@ -36,6 +57,11 @@ const Header = () => {
             <FaSearch className={classes.searchicon} />
           </form>
           <ul className={classes.menu}>
+            {currentUser && (
+              <li className={classes.profile}>
+                <NavLink to={"/profile"}>profile</NavLink>
+              </li>
+            )}
             <li>
               <NavLink to="/"  >Home</NavLink>
             </li>
@@ -43,7 +69,23 @@ const Header = () => {
               <NavLink to="/about" className={"hover:text-red-500"}>About</NavLink>
             </li>
             <li>
+<<<<<<< HEAD
               <NavLink to="/sign-in" className={"hover:text-red-500"}>SignIn</NavLink>
+=======
+              <NavLink to="/sign-in">
+                {currentUser ? (
+                  <NavLink to="/profile">
+                    <img
+                      className={`${classes.profileImage} ${classes.img_header}`}
+                      src={currentUser.avatar}
+                      alt="profile"
+                    />
+                  </NavLink>
+                ) : (
+                  "sign In"
+                )}
+              </NavLink>
+>>>>>>> 154f4f4470465cd3485de88deb2cb4607b7e1b12
             </li>
           </ul>
         </div>
