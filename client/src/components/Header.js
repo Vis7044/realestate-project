@@ -8,6 +8,9 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
+
+ 
+
   const { currentUser } = useSelector((state) => state.user);
 
   const isActive = () => {
@@ -59,12 +62,15 @@ const Header = () => {
               </li>
             )}
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/"  >Home</NavLink>
             </li>
             <li>
-              <NavLink to="/about">About</NavLink>
+              <NavLink to="/about" className={"hover:text-red-500"}>About</NavLink>
             </li>
             <li>
+
+              <NavLink to="/sign-in" className={"hover:text-red-500"}>SignIn</NavLink>
+
               <NavLink to="/sign-in">
                 {currentUser ? (
                   <NavLink to="/profile">
@@ -78,6 +84,7 @@ const Header = () => {
                   "sign In"
                 )}
               </NavLink>
+
             </li>
           </ul>
         </div>
