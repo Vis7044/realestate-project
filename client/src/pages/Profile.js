@@ -9,6 +9,7 @@ import {
   uploadString,
 } from "firebase/storage";
 import { app } from "../firebase";
+import { Link } from "react-router-dom";
 
 import {
   deleteUserFailure,
@@ -105,9 +106,9 @@ export default function Profile() {
       const res = await fetch(`/api/user/delete/${currentUser._id}`, {
         method: "DELETE",
       });
-      const data = res.json()
-      if(data.succes === false) {
-        dispatch(deleteUserFailure(data.message))
+      const data = res.json();
+      if (data.succes === false) {
+        dispatch(deleteUserFailure(data.message));
       }
       dispatch(deleteUserSuccess(data));
     } catch (error) {
@@ -117,20 +118,18 @@ export default function Profile() {
 
   const handleSignout = async () => {
     try {
-      dispatch(signOutUserStart())
-      const res = await fetch('/api/auth/signout');
-      const data = await res.json()
-      if(data.succes === false) {
-        dispatch(signOutUserFailure(data.message))
+      dispatch(signOutUserStart());
+      const res = await fetch("/api/auth/signout");
+      const data = await res.json();
+      if (data.succes === false) {
+        dispatch(signOutUserFailure(data.message));
         return;
       }
-      dispatch(signOutUserSuccess(data))
-
+      dispatch(signOutUserSuccess(data));
     } catch (error) {
-      dispatch(signOutUserFailure(error.message))
-      
+      dispatch(signOutUserFailure(error.message));
     }
-  }
+  };
 
   return (
     <div className="  p-3 max-w-lg mx-auto ">
@@ -196,6 +195,12 @@ export default function Profile() {
         >
           {loading ? "Loading..." : "Update"}
         </button>
+        <Link
+          to={"/create-listing"}
+          className="bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95"
+        >
+          create listing
+        </Link>
       </form>
       <div className="flex justify-between mt-5">
         <span
@@ -206,7 +211,10 @@ export default function Profile() {
           Delete Account
         </span>
 
-        <span className="text-red-700 cursor-pointer" onClick={handleSignout}> Sign Out</span>
+        <span className="text-red-700 cursor-pointer" onClick={handleSignout}>
+          {" "}
+          Sign Out
+        </span>
       </div>
       <p className="text-red-700 mt-5">{error ? error : ""}</p>
       <p className="text-green-700 mt-5">
