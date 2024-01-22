@@ -1,18 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./Header.module.css";
 import { FaHamburger } from "react-icons/fa";
 import { FaWindowClose } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
+  const [serachTerm, setSearchTerm] = useState('');
 
   const isActive = () => {
     setShowMenu(!showMenu);
   };
+
+  const navigate= useNavigate()
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const urlParams = new URLSearchParams(window.location.search)
+    urlParams.set('searchTerm', serachTerm);
+    const searchQuery = urlParams.toString();
+    navigate(`/search?${searchQuery}`);
+  };
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchTermFromUrl = urlParams.get('searchTerm');
+    if(searchTermFromUrl) {
+      setSearchTerm(searchTermFromUrl)
+    }
+  },[window.location.search])
 
   return (
     <div className={`container-fluid`}>
@@ -48,9 +67,9 @@ const Header = () => {
             showMenu ? classes.show : classes.hide
           } col-lg-8 col-md-12 d-flex justify-content-lg-around`}
         >
-          <form className={classes.search}>
-            <input placeholder="search.." />
-            <FaSearch className={classes.searchicon} />
+          <form onSubmit={handleSubmit} className={classes.search}>
+            <input placeholder="search.." value={serachTerm} onChange={(e => setSearchTerm(e.target.value))}/>
+            <button><FaSearch className={classes.searchicon} /></button>
           </form>
           <ul className={classes.menu}>
             {currentUser && (
