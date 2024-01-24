@@ -328,6 +328,7 @@ const CreateListing = () => {
               id="images"
               accept="image/*"
               multiple
+              required
               onChange={(e) => setFiles(e.target.files)}
             />
             <button
