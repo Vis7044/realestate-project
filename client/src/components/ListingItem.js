@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { MdLocationOn } from "react-icons/md";
 
 const ListingItem = ({ Listing }) => {
-  console.log(Listing);
   return (
     <div className="w-full sm:w-[330px] bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg">
       <Link className="text-decoration-none" to={`/listing/${Listing._id}`}>
@@ -28,7 +27,7 @@ const ListingItem = ({ Listing }) => {
           </p>
           <p className="text-slate-500 mt-2 font-semibold">
             ${" "}
-            {Listing.offer
+            {Listing.offer === false
               ? Listing.discountedPrice.toLocaleString("en-US")
               : Listing.regularPrice.toLocaleString("en-US")}
             {Listing.type === "rent" && " / month"}
