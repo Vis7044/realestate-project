@@ -6,6 +6,8 @@ import authRouter from "./routes/auth.route.js";
 import listingRouter from "./routes/listing.route.js";
 import cookieParser from "cookie-parser";
 import path from 'path'
+import { createServer } from "http";
+import {Server} from 'socket.io';
 dotenv.config();
 
 mongoose
@@ -25,7 +27,23 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-app.listen(5000, () => {
+const server = createServer(app);
+
+const io = new Server(server, {
+  cors: {
+    origin:"http://localhost:3000",
+    credentials: true,
+  }
+})
+
+
+io.on('connection', (socket) => {
+  console.log("Connected", socket.id);
+});
+
+
+
+server.listen(5000, () => {
   console.log("Server running on port 5000");
 });
 
