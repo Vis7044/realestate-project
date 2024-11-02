@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { MdLocationOn } from "react-icons/md";
 
 const ListingItem = ({ Listing }) => {
+  
+  
   return (
     <div className="w-full sm:w-[330px] bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg">
       <Link className="text-decoration-none" to={`/listing/${Listing._id}`}>

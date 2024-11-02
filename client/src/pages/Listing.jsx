@@ -14,6 +14,7 @@ import {
 } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import Contact from "./Contact";
+import MapComponent from "../mapfeature/MapComponent";
 
 const Listing = () => {
   SwiperCore.use(Navigation);
@@ -48,6 +49,8 @@ const Listing = () => {
     };
     fetchListing();
   }, [params.listingId]);
+
+  
 
   return (
     <main>
@@ -99,6 +102,7 @@ const Listing = () => {
               <FaMapMarkerAlt className="text-green-700" />
               {listing.address}
             </p>
+            <MapComponent property={listing}/>
             <div className="flex gap-4">
               <p className="bg-red-900 w-full max-w-[200px] text-white text-center p-1 rounded-md">
                 {listing.type === "rent" ? "For Rent" : "For Sale"}

@@ -14,8 +14,10 @@ import UpdateListing from "./pages/UpdateListing";
 import Listing from "./pages/Listing";
 import Search from "./pages/Search";
 import PersonalChat from "./chat/PersonalChat";
+import MapComponent from "./mapfeature/MapComponent";
 
 function App() {
+  
   return (
     <BrowserRouter>
       <Header />
@@ -32,7 +34,6 @@ function App() {
           <Route path="/update-listing/:listingId" element={<UpdateListing/>}/>
           
         </Route>
-        <Route path="/chat" element={<PersonalChat/>}/>
       </Routes>
     </BrowserRouter>
   );
