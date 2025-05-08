@@ -68,7 +68,7 @@ const Header = () => {
           } col-lg-8 col-md-12 d-flex justify-content-lg-around`}
         >
           <form onSubmit={handleSubmit} className={classes.search}>
-            <input placeholder="search.." value={serachTerm} onChange={(e => setSearchTerm(e.target.value))}/>
+            <input placeholder="search. . . ." value={serachTerm} onChange={(e => setSearchTerm(e.target.value))}/>
             <button><FaSearch className={classes.searchicon} /></button>
           </form>
           <ul className={classes.menu}>
